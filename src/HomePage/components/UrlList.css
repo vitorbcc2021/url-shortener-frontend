@@ -1,0 +1,60 @@
+.url-list {
+    margin-top: 5rem;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.url-list h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.url-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.url-table th,
+.url-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.url-table th {
+    font-weight: 600;
+}
+
+.url-table a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.url-table a:hover {
+    text-decoration: underline;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.edit-btn {
+    padding: 6px 12px;
+    background-color: #ffc107;
+    color: #000;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.delete-btn {
+    padding: 6px 12px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
