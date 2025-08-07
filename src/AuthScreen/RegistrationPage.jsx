@@ -1,35 +1,26 @@
-import './RegistrationPage.css'
+import AuthLayout from './AuthLayout'
+import { useNavigate } from 'react-router-dom'
 
-function RegistrationPage() {
-    return (
-        <>
-            <h1>Url Shortener</h1>
+export default function RegistrationPage() {
+  const navigate = useNavigate()
 
-            <div className="auth-container">
-                <form className="auth-form">
-                    <h2>Registration</h2>
-                    <div className="auth-form-group">
-                        <label htmlFor='username'>Username</label>
-                        <input id="username" type="text" required></input>
-                    </div>
+  const handleSuccess = () => {
+    navigate('/login')
+  }
 
-                    <div className="auth-form-group">
-                        <label htmlFor='password'>Password</label>
-                        <input id="password" type="password" required></input>
-                    </div>
-
-                    <div className="goto-register-page">
-                        <a href='./LoginPage'>Already registered?</a>
-                    </div>
-
-                    <button type='submit' className='submit-btn'>Cadastrar</button>
-
-                </form>
-            </div>
-
-
-        </>
-    )
+  return (
+    <AuthLayout
+      title="Registration"
+      footerLink="/login"
+      footerText="Already registered?"
+      submitText="Cadastrar"
+      apiEndpoint="https://url-shortener-1x3f.onrender.com/auth/register"
+      onSuccess={handleSuccess}
+      fields={[
+        { id: 'username', label: 'Username', type: 'text', required: true },
+        { id: 'password', label: 'Password', type: 'password', required: true },
+        { id: 'confirmPassword', label: 'Confirm Password', type: 'password', required: true }
+      ]}
+    />
+  )
 }
-
-export default RegistrationPage

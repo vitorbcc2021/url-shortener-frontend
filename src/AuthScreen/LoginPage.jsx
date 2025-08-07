@@ -1,35 +1,27 @@
-import './LoginPage.css'
+import AuthLayout from './AuthLayout'
+import { useNavigate } from 'react-router-dom'
 
-function LoginPage() {
-    return (
-        <>
-            <h1>Url Shortener</h1>
+export default function LoginPage({ onLogin }) {
+  const navigate = useNavigate()
 
-            <div className="auth-container">
-                <form className="auth-form">
-                    <h2>Login</h2>
-                    <div className="auth-form-group">
-                        <label htmlFor='username'>Username</label>
-                        <input id="username" type="text" required></input>
-                    </div>
+  const handleSuccess = (data) => {
+    localStorage.setItem('jwtToken', data.token)
+    onLogin()
+    navigate('/')
+  }
 
-                    <div className="auth-form-group">
-                        <label htmlFor='password'>Password</label>
-                        <input id="password" type="password" required></input>
-                    </div>
-
-                    <div className="goto-register-page">
-                        <a href=''>Not registered?</a>
-                    </div>
-
-                    <button type='submit' className='submit-btn'>Entrar</button>
-
-                </form>
-            </div>
-
-
-        </>
-    )
+  return (
+    <AuthLayout
+      title="Login"
+      footerLink="/register"
+      footerText="Not registered?"
+      submitText="Entrar"
+      apiEndpoint="https://url-shortener-1x3f.onrender.com/auth/login"
+      onSuccess={handleSuccess}
+      fields={[
+        { id: 'username', label: 'Username', type: 'text', required: true },
+        { id: 'password', label: 'Password', type: 'password', required: true }
+      ]}
+    />
+  )
 }
-
-export default LoginPage

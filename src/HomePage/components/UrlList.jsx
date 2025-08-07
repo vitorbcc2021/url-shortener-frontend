@@ -1,6 +1,6 @@
 import './UrlList.css'
 
-const UrlList = ({ urls }) => {
+export default function UrlList({ urls }) {
     return (
         <div className="url-list">
             <h2>Suas URLs encurtadas</h2>
@@ -36,5 +36,3 @@ const UrlList = ({ urls }) => {
         </div>
     )
 }
-
-export default UrlList

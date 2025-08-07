@@ -2,14 +2,7 @@ import './HomePage.css'
 import './components/UrlList'
 import UrlList from './components/UrlList'
 
-function HomePage() {
-    const urlList = [
-        { id: 1, original: 'https://www.google.com', short: 'goo.gl/abc123' },
-        { id: 2, original: 'https://www.github.com', short: 'ghb.io/xyz456' },
-        { id: 3, original: 'https://www.youtube.com', short: '123456'},
-        { id: 4, original: 'https://www.facebook.com', short: 'asassa'},
-    ]
-
+export default function HomePage() {
     return (
         <div className="home-container">
             
@@ -26,10 +19,8 @@ function HomePage() {
                 </form>
             </div>
 
-            <UrlList urls={urlList}/>
+            <UrlList urls={['Segurando lugar!']}/>
 
         </div>
     )
 }
-
-export default HomePage
