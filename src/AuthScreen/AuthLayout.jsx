@@ -11,7 +11,7 @@ export default function AuthLayout({
     fields,
     onSuccess
 }) {
-    const [formData, setFormData] = useState({})
+    const [formData, setFormData] = useState({username: '', password: ''})
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
 
@@ -40,6 +40,7 @@ export default function AuthLayout({
 
         } catch (err) {
             setError(err.message)
+            console.log(err.message)
         } finally {
             setLoading(false)
         }

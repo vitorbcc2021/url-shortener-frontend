@@ -1,17 +1,18 @@
 import './HomePage.css'
+import LogoutButton from './components/LogoutButton'
 import './components/UrlList'
 import UrlList from './components/UrlList'
 
 export default function HomePage() {
     return (
         <div className="home-container">
-            
+
             <h1>Url Shortener</h1>
-            
+
             <div className="logout-container">
-                <button className="logout-btn">Logout</button>
+                <LogoutButton />
             </div>
-        
+
             <div className="url-submit">
                 <form className="url-form">
                     <input type="text" placeholder='ex:www.meu-site.com...'></input>
@@ -19,7 +20,7 @@ export default function HomePage() {
                 </form>
             </div>
 
-            <UrlList urls={['Segurando lugar!']}/>
+            <UrlList urls={['Segurando lugar!']} />
 
         </div>
     )

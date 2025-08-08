@@ -1,12 +1,11 @@
 import AuthLayout from './AuthLayout'
 import { useNavigate } from 'react-router-dom'
 
-export default function LoginPage({ onLogin }) {
+export default function LoginPage() {
   const navigate = useNavigate()
 
   const handleSuccess = (data) => {
     localStorage.setItem('jwtToken', data.token)
-    onLogin()
     navigate('/')
   }
 
