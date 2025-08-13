@@ -3,13 +3,13 @@ import './UrlList.css'
 export default function UrlList({ urls }) {
     return (
         <div className="url-list">
-            <h2>Suas URLs encurtadas</h2>
+            <h2>Your shortened URLs</h2>
             <table className="url-table">
                 <thead>
                     <tr>
-                        <th>URL Original</th>
-                        <th>URL Curta</th>
-                        <th>Ações</th>
+                        <th>Original URL</th>
+                        <th>Short URL</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
