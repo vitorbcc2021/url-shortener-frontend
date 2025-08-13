@@ -11,16 +11,16 @@ export default function AuthLayout({
     fields,
     onSuccess
 }) {
-    const [formData, setFormData] = useState({username: '', password: ''})
+    const [formData, setFormData] = useState({ username: '', password: '' })
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
 
-    const handleChange = (e) => {
+    function handleChange(e) {
         const { id, value } = e.target
         setFormData(prev => ({ ...prev, [id]: value }))
     }
 
-    const handleSubmit = async (e) => {
+    async function handleSubmit(e) {
         e.preventDefault()
         setLoading(true)
         setError('')

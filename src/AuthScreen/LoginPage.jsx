@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 export default function LoginPage() {
   const navigate = useNavigate()
 
-  const handleSuccess = (data) => {
+  function handleSuccess(data) {
     localStorage.setItem('jwtToken', data.token)
     navigate('/')
   }

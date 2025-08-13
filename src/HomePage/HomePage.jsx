@@ -1,6 +1,5 @@
 import './HomePage.css'
 import LogoutButton from './components/LogoutButton'
-import './components/UrlList'
 import UrlList from './components/UrlList'
 
 export default function HomePage() {

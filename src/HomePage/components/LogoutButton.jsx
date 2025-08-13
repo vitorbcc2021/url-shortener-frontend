@@ -1,4 +1,4 @@
-import { useAuth } from '../../utils/AuthContext'
+import useAuth from '../../utils/use-auth'
 
 export default function LogoutButton() {
     const { logout } = useAuth()

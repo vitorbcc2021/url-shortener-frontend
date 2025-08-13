@@ -1,5 +1,5 @@
-import { useAuth } from "./AuthContext";
-import { Navigate } from "react-router-dom";
+import useAuth from './use-auth.js'
+import { Navigate } from 'react-router-dom'
 
 export function ProtectedRoute({ children }) {
     const { isLoggedIn } = useAuth()

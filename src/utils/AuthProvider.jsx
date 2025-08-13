@@ -1,9 +1,8 @@
-import { createContext, useContext, useState } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { AuthContext } from './auth-context'
 
-const AuthContext = createContext()
-
-export function AuthProvider({ children }) {
+export default function AuthProvider({ children }) {
     const [isLoggedIn, setIsLoggedIn] = useState(() => {
         const token = localStorage.getItem('jwtToken')
         return !!token
@@ -28,8 +27,4 @@ export function AuthProvider({ children }) {
             {children}
         </AuthContext.Provider>
     )
-}
-
-export function useAuth() {
-    return useContext(AuthContext)
 }
