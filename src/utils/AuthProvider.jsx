@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { AuthContext } from './auth-context'
+import { AuthContext } from './AuthContext'
 
 export default function AuthProvider({ children }) {
     const [isLoggedIn, setIsLoggedIn] = useState(() => {

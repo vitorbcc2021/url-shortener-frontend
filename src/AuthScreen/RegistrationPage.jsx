@@ -1,13 +1,6 @@
 import AuthLayout from './AuthLayout'
-import { useNavigate } from 'react-router-dom'
 
 export default function RegistrationPage() {
-  const navigate = useNavigate()
-
-  function handleSuccess() {
-    navigate('/login')
-  }
-
   return (
     <AuthLayout
       title="Registration"
@@ -15,7 +8,6 @@ export default function RegistrationPage() {
       footerText="Already registered?"
       submitText="Cadastrar"
       apiEndpoint="https://url-shortener-1x3f.onrender.com/auth/register"
-      onSuccess={handleSuccess}
       fields={[
         { id: 'username', label: 'Username', type: 'text', required: true },
         { id: 'password', label: 'Password', type: 'password', required: true },

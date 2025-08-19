@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import './AuthLayout.css'
 import { useState } from 'react'
+import useAuth from '../utils/AuthContext'
 
 export default function AuthLayout({
     title,
@@ -8,12 +9,13 @@ export default function AuthLayout({
     footerText,
     submitText,
     apiEndpoint,
-    fields,
-    onSuccess
+    fields
 }) {
     const [formData, setFormData] = useState({ username: '', password: '' })
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
+
+    const { login } = useAuth()
 
     function handleChange(e) {
         const { id, value } = e.target
@@ -36,7 +38,7 @@ export default function AuthLayout({
 
             if (!response.ok) throw new Error(data.message || 'Erro na autenticação')
 
-            onSuccess(data)
+            login(data.token)
 
         } catch (err) {
             setError(err.message)
