@@ -14,16 +14,12 @@ export default function UrlList({ urls }) {
                 </thead>
                 <tbody>
                     {urls.map((item) => (
-                        <tr key={item.id}>
+                        <tr key={item._id}>
                             <td>
-                                <a href={item.original} target="_blank" rel="noopener noreferrer">
-                                    {item.original}
-                                </a>
+                                <p>{item.originalUrl}</p>
                             </td>
                             <td>
-                                <a href={item.short} target="_blank" rel="noopener noreferrer">
-                                    {item.short}
-                                </a>
+                                <p>{item.shortUrl}</p>
                             </td>
                             <td className="actions">
                                 <button className="edit-btn">Editar</button>

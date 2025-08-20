@@ -1,3 +1,4 @@
+import { REGISTER_URL } from '../variables'
 import AuthLayout from './AuthLayout'
 
 export default function RegistrationPage() {
@@ -7,7 +8,7 @@ export default function RegistrationPage() {
       footerLink="/login"
       footerText="Already registered?"
       submitText="Cadastrar"
-      apiEndpoint="https://url-shortener-1x3f.onrender.com/auth/register"
+      apiEndpoint={REGISTER_URL}
       fields={[
         { id: 'username', label: 'Username', type: 'text', required: true },
         { id: 'password', label: 'Password', type: 'password', required: true },

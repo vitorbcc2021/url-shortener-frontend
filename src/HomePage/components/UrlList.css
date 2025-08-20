@@ -23,6 +23,10 @@
     border-bottom: 1px solid #dddddd35;
 }
 
+.actions {
+    margin-top: 17px;
+}
+
 .url-table th {
     font-weight: 600;
 }
@@ -43,11 +47,12 @@
 
 .edit-btn {
     padding: 6px 12px;
-    background-color: rgba(252, 235, 38, 0.506);
+    background-color: rgba(248, 231, 38, 0.602);
     color: #ffffff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    margin-bottom: 11px;
 }
 
 .delete-btn {
@@ -57,4 +62,5 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    margin-bottom: 11px;
 }

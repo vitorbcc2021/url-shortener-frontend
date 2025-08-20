@@ -1,16 +1,15 @@
 import { useState } from 'react'
+import { SUBMIT_URL } from '../../variables'
 
 export default function UrlSubmit() {
 
     const [urlForm, setUrlForm] = useState({ originalUrl: '' })
 
-    const apiEndpoint = 'https://url-shortener-1x3f.onrender.com/'
-
     async function handleSubmit(e) {
         e.preventDefault()
 
         try {
-            const response = await fetch(apiEndpoint, {
+            const response = await fetch(SUBMIT_URL, {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json',

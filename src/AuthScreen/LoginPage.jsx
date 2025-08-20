@@ -1,3 +1,4 @@
+import { LOGIN_URL } from '../variables'
 import AuthLayout from './AuthLayout'
 
 export default function LoginPage() {
@@ -7,7 +8,7 @@ export default function LoginPage() {
       footerLink="/register"
       footerText="Not registered?"
       submitText="Entrar"
-      apiEndpoint="https://url-shortener-1x3f.onrender.com/auth/login"
+      apiEndpoint={LOGIN_URL}
       fields={[
         { id: 'username', label: 'Username', type: 'text', required: true },
         { id: 'password', label: 'Password', type: 'password', required: true }
