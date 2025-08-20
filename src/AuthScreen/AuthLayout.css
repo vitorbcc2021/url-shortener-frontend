@@ -5,7 +5,6 @@
   text-align: center;
 }
 
-/* Estilos gerais */
 .auth-container {
   display: flex;
   justify-content: center;
@@ -28,7 +27,6 @@
     top: 10px;
 }
 
-/* Grupos de formulário */
 .auth-form-group {
   margin-bottom: 1.5rem;
 }
@@ -61,7 +59,6 @@
   margin-bottom: 10px;
 }
 
-/* Botão de submit */
 .submit-btn {
   width: 50%;
   padding: 0.75rem;
@@ -83,7 +80,6 @@
   transform: translateY(1px);
 }
 
-/* Responsividade */
 @media (max-width: 480px) {
   .auth-form {
     padding: 1.5rem;
