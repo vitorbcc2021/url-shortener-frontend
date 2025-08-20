@@ -36,7 +36,7 @@ export default function AuthLayout({
 
             const data = await response.json()
 
-            if (!response.ok) throw new Error(data.message || 'Erro na autenticação')
+            if (!response.ok) throw new Error(data.message || 'Authentication Error')
 
             login(data.token)
 

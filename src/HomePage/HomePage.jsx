@@ -1,6 +1,7 @@
 import './HomePage.css'
 import LogoutButton from './components/LogoutButton'
 import UrlList from './components/UrlList'
+import UrlSubmit from './components/UrlSubmit'
 
 export default function HomePage() {
     return (
@@ -12,12 +13,7 @@ export default function HomePage() {
                 <LogoutButton />
             </div>
 
-            <div className="url-submit">
-                <form className="url-form">
-                    <input type="text" placeholder='ex:www.meu-site.com...'></input>
-                    <button className="submit-url-btn" type="submit">submit</button>
-                </form>
-            </div>
+            <UrlSubmit />
 
             <UrlList urls={['Segurando lugar!']} />
 
