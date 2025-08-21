@@ -1,6 +1,16 @@
 import './UrlList.css'
+import EditButton from './EditButton'
+import DeleteButton from './DeleteButton'
 
-export default function UrlList({ urls }) {
+export default function UrlList({ urls, onUrlEdited, onUrlDeleted }) {
+    function handleDeleteSuccess(deletedUrlId) {
+        onUrlDeleted?.(deletedUrlId)
+    }
+
+    function handleEditSuccess(updatedUrl) {
+        onUrlEdited?.(updatedUrl)
+    }
+
     return (
         <div className="url-list">
             <h2>Your shortened URLs</h2>
@@ -22,8 +32,14 @@ export default function UrlList({ urls }) {
                                 <p>{item.shortUrl}</p>
                             </td>
                             <td className="actions">
-                                <button className="edit-btn">Editar</button>
-                                <button className="delete-btn">Excluir</button>
+                                <EditButton
+                                    url={item}
+                                    onEditSuccess={handleEditSuccess}
+                                />
+                                <DeleteButton
+                                    shortUrl={item.shortUrl}
+                                    onDeleteSuccess={handleDeleteSuccess}
+                                />
                             </td>
                         </tr>
                     ))}

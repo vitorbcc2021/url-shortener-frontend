@@ -1,6 +1,6 @@
 import './HomePage.css'
 import LogoutButton from './components/LogoutButton'
-import UrlList from './components/UrlList'
+import UrlList from './components/UrlList/UrlList'
 import UrlSubmit from './components/UrlSubmit'
 import { useEffect, useState } from 'react'
 import useAuth from '../utils/AuthContext'
@@ -13,11 +13,13 @@ export default function HomePage() {
     useEffect(() => {
         async function fetchUrls() {
             const token = localStorage.getItem('jwtToken')
+
             const response = await fetch(GET_URL_LIST, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
             })
+
             if (response.ok) {
                 const data = await response.json()
                 setUrls(data)
@@ -31,6 +33,15 @@ export default function HomePage() {
         }
     }, [isLoggedIn])
 
+
+    function handleUrlDeleted(deletedUrlId) {
+        setUrls(prevUrls => prevUrls.filter(url => url._id !== deletedUrlId))
+    }
+
+    function handleUrlEdited(updatedUrl) {
+        setUrls(prevUrls => prevUrls.map(url => url._id === updatedUrl._id ? updatedUrl : url))
+    }
+
     return (
         <div className="home-container">
 
@@ -42,7 +53,7 @@ export default function HomePage() {
 
             <UrlSubmit />
 
-            <UrlList urls={urls} />
+            <UrlList urls={urls} onUrlDeleted={handleUrlDeleted} onUrlEdited={handleUrlEdited} />
 
         </div>
     )
