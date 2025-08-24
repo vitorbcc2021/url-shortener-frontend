@@ -1,6 +1,16 @@
 import { GENERAL_URL } from '../variables'
 
 export const apiService = {
+    async auth(apiEndpoint, formData) {
+        const response = await fetch(apiEndpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+        })
+
+        return response
+    },
+
     async submitUrl(url) {
         const token = localStorage.getItem('jwtToken')
         const response = await fetch(`${GENERAL_URL}/`, {

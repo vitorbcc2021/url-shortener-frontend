@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import './AuthLayout.css'
 import { useState } from 'react'
 import useAuth from '../contexts/AuthContext'
+import { apiService } from '../services/ApiService'
 
 export default function AuthLayout({
     title,
@@ -28,11 +29,7 @@ export default function AuthLayout({
         setError('')
 
         try {
-            const response = await fetch(apiEndpoint, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData)
-            })
+            const response = await apiService.auth(apiEndpoint, formData)
 
             const data = await response.json()
 
