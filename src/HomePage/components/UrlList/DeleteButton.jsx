@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './ActionButtons.css'
-import { DELETE_URL } from '../../../variables'
+import { apiService } from '../../../services/ApiService'
 
 export default function DeleteButton({ shortUrl, onDeleteSuccess }) {
     const [isDeleting, setIsDeleting] = useState(false)
@@ -12,14 +12,7 @@ export default function DeleteButton({ shortUrl, onDeleteSuccess }) {
 
         setIsDeleting(true)
         try {
-            const token = localStorage.getItem('jwtToken')
-            
-            const response = await fetch(`${DELETE_URL}${shortUrl}`, {
-                method: 'DELETE',
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            })
+            const response = await apiService.deleteUrl(shortUrl)
 
             if (!response.ok) throw new Error('Falha ao deletar URL')
 

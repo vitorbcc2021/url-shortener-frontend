@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import './AuthLayout.css'
 import { useState } from 'react'
-import useAuth from '../utils/AuthContext'
+import useAuth from '../contexts/AuthContext'
 
 export default function AuthLayout({
     title,

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { SUBMIT_URL } from '../../variables'
+import { apiService } from '../../services/ApiService'
 
 export default function UrlSubmit() {
 
@@ -9,14 +9,7 @@ export default function UrlSubmit() {
         e.preventDefault()
 
         try {
-            const response = await fetch(SUBMIT_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-type': 'application/json',
-                    'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`
-                },
-                body: JSON.stringify(urlForm)
-            })
+            const response = await apiService.submitUrl(urlForm)
 
             const data = await response.json()
 
@@ -31,7 +24,6 @@ export default function UrlSubmit() {
         const { id, value } = e.target
         setUrlForm(prev => ({ ...prev, [id]: value }))
     }
-
 
 
     return (<div className="url-submit">

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './ActionButtons.css'
-import { EDIT_URL } from '../../../variables'
+import { apiService } from '../../../services/ApiService'
 
 export default function EditButton({ url, onEditSuccess }) {
     const [isEditing, setIsEditing] = useState(false)
@@ -12,16 +12,7 @@ export default function EditButton({ url, onEditSuccess }) {
 
     async function handleSave() {
         try {
-            const token = localStorage.getItem('jwtToken')
-
-            const response = await fetch(`${EDIT_URL}${url.shortUrl}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify({ newUrl: editedUrl })
-            })
+            const response = await apiService.updateUrl(url.shortUrl, editedUrl)
 
             if (!response.ok) throw new Error('Falha ao editar URL')
 
@@ -37,7 +28,7 @@ export default function EditButton({ url, onEditSuccess }) {
         }
     }
 
-    const handleCancel = () => {
+    function handleCancel() {
         setEditedUrl(url.originalUrl)
         setIsEditing(false)
     }
