@@ -14,6 +14,7 @@ export const apiService = {
     async submitUrl(url) {
         const token = localStorage.getItem('jwtToken')
         const response = await fetch(`${GENERAL_URL}/`, {
+            method: 'POST',
             headers: {
                 'Content-type': 'application/json',
                 'Authorization': `Bearer ${token}`
@@ -27,6 +28,7 @@ export const apiService = {
     async getUrls() {
         const token = localStorage.getItem('jwtToken')
         const response = await fetch(`${GENERAL_URL}/urls`, {
+            method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -52,10 +54,10 @@ export const apiService = {
         const response = await fetch(`${GENERAL_URL}/${urlId}`, {
             method: 'PUT',
             headers: {
-                'Content-Type': 'application/json',
+                'Content-type': 'application/json',
                 'Authorization': `Bearer ${token}`
             },
-            body: JSON.stringify(updatedData)
+            body: JSON.stringify({ newUrl: updatedData })
         })
 
         return response

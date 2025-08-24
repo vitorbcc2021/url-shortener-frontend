@@ -1,8 +1,44 @@
 import './UrlList.css'
 import EditButton from './EditButton'
 import DeleteButton from './DeleteButton'
+import { useState, useEffect } from 'react'
+import useAuth from '../../../contexts/AuthContext'
+import { apiService } from '../../../services/ApiService'
 
-export default function UrlList({ urls, onUrlEdited, onUrlDeleted }) {
+export default function UrlList() {
+    const [urls, setUrls] = useState([])
+    const { isLoggedIn } = useAuth()
+
+
+    function handleUrlDeleted(deletedUrlId) {
+        setUrls(prevUrls => prevUrls.filter(url => url._id !== deletedUrlId))
+    }
+
+    function handleUrlEdited(updatedUrl) {
+        setUrls(prevUrls => prevUrls.map(url => url._id === updatedUrl._id ? updatedUrl : url))
+    }
+
+
+    useEffect(() => {
+        async function fetchUrls() {
+            try {
+                const response = await apiService.getUrls()
+    
+                if (response.ok) {
+                    const data = await response.json()
+                    setUrls(data)
+                } else {
+                    setUrls([])
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
+        if (isLoggedIn) fetchUrls()
+            
+    }, [isLoggedIn])
+
     return (
         <div className="url-list">
             <h2>Your shortened URLs</h2>
@@ -26,11 +62,11 @@ export default function UrlList({ urls, onUrlEdited, onUrlDeleted }) {
                             <td className="actions">
                                 <EditButton
                                     url={item}
-                                    onEditSuccess={(updatedUrl) => onUrlEdited?.(updatedUrl)}
+                                    onEditSuccess={handleUrlEdited}
                                 />
                                 <DeleteButton
                                     shortUrl={item.shortUrl}
-                                    onDeleteSuccess={(deletedUrlId) => onUrlDeleted?.(deletedUrlId)}
+                                    onDeleteSuccess={handleUrlDeleted}
                                 />
                             </td>
                         </tr>
