@@ -1,22 +1,22 @@
 import { useState } from 'react'
 import { apiService } from '../../services/ApiService'
 
-export default function UrlSubmit() {
-
+export default function UrlSubmit({ onUrlCreated }) {
     const [urlForm, setUrlForm] = useState({ originalUrl: '' })
 
     async function handleSubmit(e) {
         e.preventDefault()
 
         try {
-            const response = await apiService.submitUrl(urlForm)
+            const newUrl = await apiService.submitUrl(urlForm)
 
-            const data = await response.json()
-
-            if (!response.ok) throw new Error(data.message || 'An error ocurred on submit url task')
+            onUrlCreated?.(newUrl)
+            setUrlForm({ originalUrl: '' })
+            alert('URL criada com sucesso!')
 
         } catch (error) {
             console.log(error.message)
+            alert(error.message)
         }
     }
 
@@ -24,7 +24,6 @@ export default function UrlSubmit() {
         const { id, value } = e.target
         setUrlForm(prev => ({ ...prev, [id]: value }))
     }
-
 
     return (<div className="url-submit">
         <form className="url-form" onSubmit={handleSubmit}>

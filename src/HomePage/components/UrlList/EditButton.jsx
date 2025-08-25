@@ -12,11 +12,7 @@ export default function EditButton({ url, onEditSuccess }) {
 
     async function handleSave() {
         try {
-            const response = await apiService.updateUrl(url.shortUrl, editedUrl)
-
-            if (!response.ok) throw new Error('Falha ao editar URL')
-
-            const updatedUrl = await response.json()
+            const updatedUrl = await apiService.updateUrl(url.shortUrl, editedUrl)
 
             onEditSuccess?.(updatedUrl)
             setIsEditing(false)

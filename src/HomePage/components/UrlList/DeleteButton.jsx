@@ -12,9 +12,7 @@ export default function DeleteButton({ shortUrl, onDeleteSuccess }) {
 
         setIsDeleting(true)
         try {
-            const response = await apiService.deleteUrl(shortUrl)
-
-            if (!response.ok) throw new Error('Falha ao deletar URL')
+            await apiService.deleteUrl(shortUrl)
 
             onDeleteSuccess?.(shortUrl)
             alert('URL excluída com sucesso!')

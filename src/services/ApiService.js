@@ -22,7 +22,10 @@ export const apiService = {
             body: JSON.stringify(url)
         })
 
-        return response
+        if (!response.ok)
+            throw new Error('An error ocurred on url submit task')
+
+         return await response.json()
     },
 
     async getUrls() {
@@ -34,7 +37,7 @@ export const apiService = {
             }
         })
 
-        return response
+        return await response.json()
     },
 
     async deleteUrl(urlId) {
@@ -46,7 +49,10 @@ export const apiService = {
             }
         })
 
-        return response
+        if(!response.ok)
+            throw new Error('An error ocurred on DeleteUrl task!!!')
+        
+        return
     },
 
     async updateUrl(urlId, updatedData) {
@@ -60,6 +66,9 @@ export const apiService = {
             body: JSON.stringify({ newUrl: updatedData })
         })
 
-        return response
+        if(!response.ok)
+            throw new Error('Failed at update url!!')
+
+        return await response.json()
     }
 }
