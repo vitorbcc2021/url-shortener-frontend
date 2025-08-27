@@ -1,43 +1,27 @@
 import { useState } from 'react'
 import './ActionButtons.css'
-import { apiService } from '../../../services/ApiService'
 
-export default function EditButton({ url, onEditSuccess }) {
+export default function EditButton({ item, onEditSuccess, enterEditMode, onCancel }) {
     const [isEditing, setIsEditing] = useState(false)
-    const [editedUrl, setEditedUrl] = useState(url.originalUrl)
 
-    function handleEdit() {
+    function startEditMode() {
         setIsEditing(true)
+        enterEditMode?.()
     }
 
-    async function handleSave() {
-        try {
-            const updatedUrl = await apiService.updateUrl(url.shortUrl, editedUrl)
-
-            onEditSuccess?.(updatedUrl)
-            setIsEditing(false)
-            alert('URL atualizada com sucesso!')
-
-        } catch (error) {
-            console.error('Erro:', error)
-            alert('Erro ao editar URL')
-        }
+    function handleSave() {
+        onEditSuccess?.(item)
+        setIsEditing(false)
     }
 
     function handleCancel() {
-        setEditedUrl(url.originalUrl)
         setIsEditing(false)
+        onCancel?.()
     }
 
     if (isEditing) {
         return (
             <div className="edit-mode">
-                <input
-                    type="text"
-                    value={editedUrl}
-                    onChange={(e) => setEditedUrl(e.target.value)}
-                    className="url-edit-input"
-                />
                 <button className="save-btn" onClick={handleSave}>
                     Salvar
                 </button>
@@ -49,7 +33,7 @@ export default function EditButton({ url, onEditSuccess }) {
     }
 
     return (
-        <button className="edit-btn" onClick={handleEdit}>
+        <button className="edit-btn" onClick={startEditMode}>
             Editar
         </button>
     )

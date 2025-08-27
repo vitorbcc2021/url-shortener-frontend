@@ -6,6 +6,14 @@ body {
 .home-container {
   position: relative;
   min-height: auto;
+  width: 750px;
+}
+
+.access-hint {
+  margin-bottom: -30px;
+  padding: 10px;
+  background-color: rgba(171, 195, 85, 0.33);
+  border-radius: 12px;
 }
 
 .logout-container {

@@ -1,12 +1,39 @@
 import './UrlList.css'
 import EditButton from './EditButton'
 import DeleteButton from './DeleteButton'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import useAuth from '../../../contexts/AuthContext'
 import { apiService } from '../../../services/ApiService'
 
 export default function UrlList({ urls, syncUrls, onUrlDeleted, onUrlEdited }) {
     const { isLoggedIn } = useAuth()
+    const [editingId, setEditingId] = useState(null)
+    const [editingUrl, setEditingUrl] = useState('')
+
+    function enterEditMode(item) {
+        setEditingId(item._id)
+        setEditingUrl(item.originalUrl)
+    }
+
+    async function saveEditedUrl(url) {
+        try {
+            const updatedUrl = await apiService.updateUrl(url.shortUrl, editingUrl)
+
+            if (updatedUrl) {
+                onUrlEdited?.(updatedUrl)
+                setEditingId(null)
+                alert('URL atualizada com sucesso!')
+            }
+
+        } catch (error) {
+            console.log('Erro:', error)
+            alert('Erro ao editar URL')
+        }
+    }
+
+    function cancelEditUrl() {
+        setEditingId(null)
+    }
 
     useEffect(() => {
         async function fetchUrls() {
@@ -38,20 +65,37 @@ export default function UrlList({ urls, syncUrls, onUrlDeleted, onUrlEdited }) {
                     {urls.map((item) => (
                         <tr key={item._id}>
                             <td>
-                                <p>{item.originalUrl}</p>
+                                {
+                                    editingId === item._id ?
+                                        <input
+                                            type="text"
+                                            value={editingUrl}
+                                            onChange={(e) => setEditingUrl(e.target.value)}
+                                            className="url-edit-input"
+                                            autoFocus
+                                        />
+                                        :
+                                        <p>{item.originalUrl}</p>
+                                }
                             </td>
                             <td>
                                 <p>{item.shortUrl}</p>
                             </td>
                             <td className="actions">
                                 <EditButton
-                                    url={item}
-                                    onEditSuccess={onUrlEdited}
+                                    item={item}
+                                    onEditSuccess={saveEditedUrl}
+                                    enterEditMode={() => enterEditMode(item)}
+                                    onCancel={cancelEditUrl}
                                 />
-                                <DeleteButton
-                                    shortUrl={item.shortUrl}
-                                    onDeleteSuccess={onUrlDeleted}
-                                />
+                                {
+                                    editingId === item._id ?
+                                        null
+                                        :
+                                        <DeleteButton
+                                            shortUrl={item.shortUrl}
+                                            onDeleteSuccess={onUrlDeleted}
+                                        />}
                             </td>
                         </tr>
                     ))}
