@@ -12,7 +12,7 @@ export const apiService = {
     },
 
     async submitUrl(url) {
-        const token = localStorage.getItem('jwtToken')
+        const token = sessionStorage.getItem('jwtToken')
         const response = await fetch(`${GENERAL_URL}/`, {
             method: 'POST',
             headers: {
@@ -29,7 +29,7 @@ export const apiService = {
     },
 
     async getUrls() {
-        const token = localStorage.getItem('jwtToken')
+        const token = sessionStorage.getItem('jwtToken')
         const response = await fetch(`${GENERAL_URL}/urls`, {
             method: 'GET',
             headers: {
@@ -41,7 +41,7 @@ export const apiService = {
     },
 
     async deleteUrl(urlId) {
-        const token = localStorage.getItem('jwtToken')
+        const token = sessionStorage.getItem('jwtToken')
         const response = await fetch(`${GENERAL_URL}/${urlId}`, {
             method: 'DELETE',
             headers: {
@@ -56,7 +56,7 @@ export const apiService = {
     },
 
     async updateUrl(urlId, updatedData) {
-        const token = localStorage.getItem('jwtToken')
+        const token = sessionStorage.getItem('jwtToken')
         const response = await fetch(`${GENERAL_URL}/${urlId}`, {
             method: 'PUT',
             headers: {

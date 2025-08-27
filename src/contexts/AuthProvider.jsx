@@ -4,20 +4,20 @@ import { AuthContext } from './AuthContext'
 
 export default function AuthProvider({ children }) {
     const [isLoggedIn, setIsLoggedIn] = useState(() => {
-        const token = localStorage.getItem('jwtToken')
+        const token = sessionStorage.getItem('jwtToken')
         return !!token
     })
 
     const navigate = useNavigate()
 
     function login(token) {
-        localStorage.setItem('jwtToken', token)
+        sessionStorage.setItem('jwtToken', token)
         setIsLoggedIn(true)
         navigate('/')
     }
 
     function logout() {
-        localStorage.removeItem('jwtToken')
+        sessionStorage.removeItem('jwtToken')
         setIsLoggedIn(false)
         navigate('/login')
     }
