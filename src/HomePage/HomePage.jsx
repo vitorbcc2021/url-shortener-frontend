@@ -29,7 +29,7 @@ export default function HomePage() {
 
             <h1>Url Shortener</h1>
 
-            <p className="access-hint">You can access your shorten Url on <em>https://url-shortener-1x3f.onrender.com/<u>your_short_url</u></em></p>
+            <p className="access-hint">You can access your shorten Url on: <em>https://url-shortener-1x3f.onrender.com/<u>your_short_url</u></em></p>
 
             <div className="logout-container">
                 <LogoutButton />

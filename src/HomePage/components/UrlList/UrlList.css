@@ -25,6 +25,11 @@
 
 .url-table th {
     font-weight: 600;
+    text-align: center;
+}
+
+.original-url-td {
+    width: 410px;
 }
 
 .url-table a {

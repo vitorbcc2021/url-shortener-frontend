@@ -64,7 +64,7 @@ export default function UrlList({ urls, syncUrls, onUrlDeleted, onUrlEdited }) {
                 <tbody>
                     {urls.map((item) => (
                         <tr key={item._id}>
-                            <td>
+                            <td className='original-url-td'>
                                 {
                                     editingId === item._id ?
                                         <input
