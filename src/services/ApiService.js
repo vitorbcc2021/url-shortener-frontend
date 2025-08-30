@@ -1,14 +1,41 @@
-import { GENERAL_URL } from '../variables'
+import { GENERAL_URL, RECRUITER_LOGIN, RECRUITER_LOGOUT } from '../variables'
 
 export const apiService = {
     async auth(apiEndpoint, formData) {
         const response = await fetch(apiEndpoint, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-type': 'application/json' },
             body: JSON.stringify(formData)
         })
 
-        return response
+        if (!response.ok) throw new Error('Authentication error!')
+
+        const data = await response.json()
+
+        return data.token
+    },
+
+    async recruiterLogin() {
+        const response = await fetch(RECRUITER_LOGIN, {
+            method: 'GET'
+        })
+
+        if (!response.ok) throw new Error('Failed on access the website as a recruiter!')
+
+        const data = await response.json()
+
+        return data.token
+    },
+
+    async recruiterLogout() {
+        const token = sessionStorage.getItem('jwtToken')
+        const response = await fetch(RECRUITER_LOGOUT, {
+            method: 'DELETE',
+            headers: { Authorization: `Bearer ${token}` }
+        })
+
+        if(!response.ok) throw new Error('Error on delete Recruiter URLs!!!')
+
     },
 
     async submitUrl(url) {
@@ -22,10 +49,9 @@ export const apiService = {
             body: JSON.stringify(url)
         })
 
-        if (!response.ok)
-            throw new Error('An error ocurred on url submit task')
+        if (!response.ok) throw new Error('An error ocurred on url submit task')
 
-         return await response.json()
+        return await response.json()
     },
 
     async getUrls() {
@@ -49,9 +75,8 @@ export const apiService = {
             }
         })
 
-        if(!response.ok)
-            throw new Error('An error ocurred on DeleteUrl task!!!')
-        
+        if (!response.ok) throw new Error('An error ocurred on DeleteUrl task!!!')
+
         return
     },
 
@@ -66,8 +91,7 @@ export const apiService = {
             body: JSON.stringify({ newUrl: updatedData })
         })
 
-        if(!response.ok)
-            throw new Error('Failed at update url!!')
+        if (!response.ok) throw new Error('Failed at update url!!')
 
         return await response.json()
     }

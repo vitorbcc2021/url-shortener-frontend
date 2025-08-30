@@ -8,22 +8,38 @@ export default function AuthProvider({ children }) {
         return !!token
     })
 
+    const [isRecruiter, setIsRecruiter] = useState(false)
+
     const navigate = useNavigate()
 
-    function login(token) {
-        sessionStorage.setItem('jwtToken', token)
-        setIsLoggedIn(true)
-        navigate('/')
+    function login(token, recruiter = false) {
+        if (recruiter) {
+            setIsRecruiter(true)
+            sessionStorage.setItem('jwtToken', token)
+            setIsLoggedIn(true)
+            navigate('/')
+        } else {
+            sessionStorage.setItem('jwtToken', token)
+            setIsLoggedIn(true)
+            navigate('/')
+        }
     }
 
     function logout() {
-        sessionStorage.removeItem('jwtToken')
-        setIsLoggedIn(false)
-        navigate('/login')
+        if (isRecruiter) {
+            sessionStorage.removeItem('jwtToken')
+            setIsRecruiter(false)
+            setIsLoggedIn(false)
+            navigate('/login')
+        } else {
+            sessionStorage.removeItem('jwtToken')
+            setIsLoggedIn(false)
+            navigate('/login')
+        }
     }
 
     return (
-        <AuthContext.Provider value={{ isLoggedIn, login, logout }}>
+        <AuthContext.Provider value={{ isLoggedIn, isRecruiter, login, logout }}>
             {children}
         </AuthContext.Provider>
     )

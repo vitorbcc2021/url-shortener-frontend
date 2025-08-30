@@ -23,20 +23,23 @@ export default function AuthLayout({
         setFormData(prev => ({ ...prev, [id]: value }))
     }
 
+    async function recruiterLogin() {
+        try {
+            const token = await apiService.recruiterLogin()
+            login(token, true)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     async function handleSubmit(e) {
         e.preventDefault()
         setLoading(true)
         setError('')
 
         try {
-            const response = await apiService.auth(apiEndpoint, formData)
-
-            const data = await response.json()
-
-            if (!response.ok) throw new Error(data.message || 'Authentication Error')
-
-            login(data.token)
-
+            const token = await apiService.auth(apiEndpoint, formData)
+            login(token)
         } catch (err) {
             setError(err.message)
             console.log(err.message)
@@ -67,13 +70,18 @@ export default function AuthLayout({
                         </div>
                     ))}
 
-                    <div className="auth-footer">
-                        <Link to={footerLink}>{footerText}</Link>
-                    </div>
-
                     <button type='submit' className='submit-btn' disabled={loading}>
                         {loading ? 'Carregando...' : submitText}
                     </button>
+
+                    <div className="auth-footer">
+                        <button type="button" onClick={recruiterLogin}>Enter as a Recruiter</button>
+                        <div>
+                            <Link to={footerLink}>{footerText}</Link>
+                        </div>
+                    </div>
+
+
                 </form>
             </div>
         </>

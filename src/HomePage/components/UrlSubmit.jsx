@@ -25,17 +25,20 @@ export default function UrlSubmit({ onUrlCreated }) {
         setUrlForm(prev => ({ ...prev, [id]: value }))
     }
 
-    return (<div className="url-submit">
-        <form className="url-form" onSubmit={handleSubmit}>
-            <input
-                id="originalUrl"
-                type="text"
-                onChange={handleChange}
-                required
-                value={urlForm['originalUrl'] || ''}
-                placeholder='ex:www.meu-site.com...'
-            />
-            <button className="submit-url-btn" type="submit">submit</button>
-        </form>
-    </div>)
+    return (
+        <div className="url-submit">
+            <form className="url-form" onSubmit={handleSubmit}>
+                <label htmlFor="originalUrl">Insert your URL here:</label>
+                <input
+                    id="originalUrl"
+                    type="text"
+                    onChange={handleChange}
+                    required
+                    value={urlForm['originalUrl'] || ''}
+                    placeholder='ex:www.meu-site.com...'
+                />
+                <button className="submit-url-btn" type="submit">submit</button>
+            </form>
+        </div>
+    )
 }

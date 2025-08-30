@@ -15,16 +15,28 @@
 
 .auth-form {
   background: rgb(255, 255, 255);
-  padding: 2rem;
-  border-radius: 16px;
+  padding: 20px;
+  border-radius: 24px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 400px;
 }
 
 .auth-form h2 {
-    color: black;
-    top: 10px;
+  color: black;
+  margin-top: 10px;
+}
+
+.error-message {
+  color: black;
+  background-color: rgba(255, 0, 0, 0.749);
+  padding: 10px 20px;
+  border-radius: 4px;
+  border-color: rgba(0, 0, 0, 0.357);
+  border-style: solid;
+  border-width: 1px;
+  width: 150px;
+  margin: 10px auto;
 }
 
 .auth-form-group {
@@ -33,13 +45,12 @@
 
 .auth-form-group label {
   display: block;
-  margin-bottom: 0.5rem;
   font-weight: 600;
   color: #000000;
 }
 
 .auth-form-group input {
-  width: 80%;
+  width: 70%;
   padding: 0.75rem;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -47,6 +58,7 @@
   transition: border-color 0.3s;
   background-color: rgba(212, 212, 212, 0.544);
   color: black;
+  border-color: lightgray;
 }
 
 .auth-form-group input:focus {
@@ -78,6 +90,10 @@
 
 .submit-btn:active {
   transform: translateY(1px);
+}
+
+.auth-footer {
+  margin-top: 10px;
 }
 
 @media (max-width: 480px) {
