@@ -13,29 +13,19 @@ export default function AuthProvider({ children }) {
     const navigate = useNavigate()
 
     function login(token, recruiter = false) {
-        if (recruiter) {
-            setIsRecruiter(true)
-            sessionStorage.setItem('jwtToken', token)
-            setIsLoggedIn(true)
-            navigate('/')
-        } else {
-            sessionStorage.setItem('jwtToken', token)
-            setIsLoggedIn(true)
-            navigate('/')
-        }
+        if (recruiter) setIsRecruiter(true)
+
+        sessionStorage.setItem('jwtToken', token)
+        setIsLoggedIn(true)
+        navigate('/')
     }
 
     function logout() {
-        if (isRecruiter) {
-            sessionStorage.removeItem('jwtToken')
-            setIsRecruiter(false)
-            setIsLoggedIn(false)
-            navigate('/login')
-        } else {
-            sessionStorage.removeItem('jwtToken')
-            setIsLoggedIn(false)
-            navigate('/login')
-        }
+        if (isRecruiter) setIsRecruiter(false)
+
+        sessionStorage.removeItem('jwtToken')
+        setIsLoggedIn(false)
+        navigate('/login')
     }
 
     return (
