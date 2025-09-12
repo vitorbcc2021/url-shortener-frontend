@@ -1,3 +1,4 @@
+import Logo from '../components/Logo'
 import './HomePage.css'
 import LogoutButton from './components/LogoutButton'
 import UrlList from './components/UrlList/UrlList'
@@ -27,9 +28,9 @@ export default function HomePage() {
     return (
         <div className="home-container">
 
-            <h1>Url Shortener</h1>
+            <Logo />
 
-            <p className="access-hint">You can access your shorten Url on: <em>https://url-shortener-1x3f.onrender.com/<u>your_short_url</u></em></p>
+            <p className="access-hint">You can access using: <em>https://url-shortener-1x3f.onrender.com/<u>your-short-url-here</u></em></p>
 
             <div className="logout-container">
                 <LogoutButton />

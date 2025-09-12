@@ -9,56 +9,51 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 10vh;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .auth-form {
-  background: rgb(255, 255, 255);
+  background: rgba(0, 0, 0, 0.400);
   padding: 20px;
-  border-radius: 24px;
+  border-radius: 42px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  width: 100%;
   max-width: 400px;
 }
 
 .auth-form h2 {
-  color: black;
+  color: rgb(255, 255, 255);
   margin-top: 10px;
 }
 
 .error-message {
-  color: black;
+  color: rgb(255, 255, 255);
   background-color: rgba(255, 0, 0, 0.749);
   padding: 10px 20px;
-  border-radius: 4px;
-  border-color: rgba(0, 0, 0, 0.357);
-  border-style: solid;
   border-width: 1px;
   width: 150px;
   margin: 10px auto;
 }
 
 .auth-form-group {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .auth-form-group label {
   display: block;
   font-weight: 600;
-  color: #000000;
+  color: white;
 }
 
 .auth-form-group input {
   width: 70%;
   padding: 0.75rem;
   border: 1px solid #ddd;
-  border-radius: 8px;
+  border-radius: 12px;
   font-size: 1rem;
-  transition: border-color 0.3s;
-  background-color: rgba(212, 212, 212, 0.544);
-  color: black;
-  border-color: lightgray;
+  transition: border-color 0.03s;
+  background-color: rgba(77, 77, 77, 0.544);
+  color: rgb(255, 255, 255);
+  border-color: rgb(92, 92, 92);
 }
 
 .auth-form-group input:focus {
@@ -74,7 +69,7 @@
 .submit-btn {
   width: 50%;
   padding: 0.75rem;
-  background-color: #4285f4;
+  background-color: #b7ab2a;
   color: white;
   border: none;
   border-radius: 8px;
@@ -85,20 +80,38 @@
 }
 
 .submit-btn:hover {
-  background-color: #3367d6;
-}
-
-.submit-btn:active {
-  transform: translateY(1px);
+  background-color: #a79b1f;
 }
 
 .auth-footer {
   margin-top: 10px;
 }
 
-@media (max-width: 480px) {
-  .auth-form {
-    padding: 1.5rem;
-    margin: 0 1rem;
-  }
+.auth-footer {
+  margin-top: 10px;
+}
+
+.register-link {
+  position: relative;
+  display: block;
+  padding: 0 20px;
+  margin-top: 15px;
+}
+
+.register-link::before,
+.register-link::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 45px;
+  height: 1px;
+  background-color: #cccccc33;
+}
+
+.register-link::before {
+  right: 82%;
+}
+
+.register-link::after {
+  left: 82%;
 }

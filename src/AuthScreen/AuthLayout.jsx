@@ -3,6 +3,7 @@ import './AuthLayout.css'
 import { useState } from 'react'
 import useAuth from '../contexts/AuthContext'
 import { apiService } from '../services/ApiService'
+import Logo from '../components/Logo'
 
 export default function AuthLayout({
     title,
@@ -50,7 +51,8 @@ export default function AuthLayout({
 
     return (
         <>
-            <h1>Url Shortener</h1>
+            <Logo />
+
             <div className="auth-container">
                 <form className="auth-form" onSubmit={handleSubmit}>
                     <h2>{title}</h2>
@@ -76,7 +78,7 @@ export default function AuthLayout({
 
                     <div className="auth-footer">
                         <button type="button" onClick={recruiterLogin}>Enter as a Recruiter</button>
-                        <div>
+                        <div className="register-link">
                             <Link to={footerLink}>{footerText}</Link>
                         </div>
                     </div>

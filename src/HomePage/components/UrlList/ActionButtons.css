@@ -11,21 +11,33 @@
 }
 
 .edit-btn {
-  background-color: #4CAF50;
+  background-color: rgb(10, 10, 10);
   color: white;
+  border-width: 1px;
+  border-color: hsl(123, 100%, 50%);
 }
 
 .edit-btn:hover {
-  background-color: #45a049;
+  background-color: hsl(123, 100%, 50%);
+  color: black;
+  font-weight: bold;
+  border-width: 1px;
+  border-color: black;
 }
 
 .delete-btn {
-  background-color: #f44336;
+  background-color: rgb(10, 10, 10);
   color: white;
+  border-width: 1px;
+  border-color: red;
 }
 
 .delete-btn:hover {
-  background-color: #da190b;
+  background-color: red;
+  color: black;
+  font-weight: bold;
+  border-width: 1px;
+  border-color: black;
 }
 
 .delete-btn:disabled {
