@@ -46,23 +46,37 @@
 }
 
 .save-btn {
-  background-color: #2196F3;
+  background-color: rgb(10, 10, 10);
   color: white;
+  border-width: 1px;
+  border-color: cadetblue;
 }
 
 .save-btn:hover {
-  background-color: #1d82d4;
+  background-color: cadetblue;
+  color: black;
+  font-weight: bold;
+  border-width: 1px;
+  border-color: black;
 }
 
 .cancel-btn {
-  background-color: #ff9800;
-  width: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(10, 10, 10);
   color: white;
-  margin-right: -5px;
+  border-width: 1px;
+  border-color: darkgoldenrod;
+  width: 70px;
 }
 
 .cancel-btn:hover {
-  background-color: #e68a00;
+  background-color: darkgoldenrod;
+  color: black;
+  font-weight: bold;
+  border-width: 1px;
+  border-color: black;
 }
 
 .edit-mode {
