@@ -1,4 +1,4 @@
-import Logo from '../components/Logo'
+import Logo from '../../components/Logo'
 import './HomePage.css'
 import LogoutButton from './components/LogoutButton'
 import UrlList from './components/UrlList/UrlList'
@@ -36,7 +36,7 @@ export default function HomePage() {
                 <LogoutButton />
             </div>
 
-            <UrlSubmit onUrlCreated={handleUrlCreated} />
+            <UrlSubmit className="url-submit" onUrlCreated={handleUrlCreated} />
 
             <UrlList
                 urls={urls}

@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom'
 import './AuthLayout.css'
 import { useState } from 'react'
-import useAuth from '../contexts/AuthContext'
-import { apiService } from '../services/ApiService'
-import Logo from '../components/Logo'
+import useAuth from '../../contexts/AuthContext'
+import { apiService } from '../../services/ApiService'
+import Logo from '../../components/Logo'
+import Icon from '../../components/Icon'
 
 export default function AuthLayout({
     title,
@@ -77,12 +78,15 @@ export default function AuthLayout({
                     </button>
 
                     <div className="auth-footer">
-                        <button type="button" onClick={recruiterLogin}>Enter as a Recruiter</button>
-                        <div className="register-link">
-                            <Link to={footerLink}>{footerText}</Link>
-                        </div>
+                        <button className="recruiter-button" type="button" onClick={recruiterLogin}>
+                            <Icon className="recruiter-icon" name='person' />
+                            Enter as a Recruiter
+                        </button>
                     </div>
 
+                    <div className="register-link">
+                        <Link to={footerLink}>{footerText}</Link>
+                    </div>
 
                 </form>
             </div>

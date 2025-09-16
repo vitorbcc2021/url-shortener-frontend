@@ -1,5 +1,6 @@
-import useAuth from '../../contexts/AuthContext'
-import { apiService } from '../../services/ApiService'
+import useAuth from '../../../contexts/AuthContext'
+import { apiService } from '../../../services/ApiService'
+import Icon from '../../../components/Icon'
 
 export default function LogoutButton() {
     const { logout, isRecruiter } = useAuth()
@@ -16,6 +17,9 @@ export default function LogoutButton() {
     }
 
     return (
-        <button className="logout-btn" onClick={handleLogout}>Logout</button>
+        <button className="logout-btn" onClick={handleLogout}>
+            <Icon className="logout-icon" name="logout" />
+            Logout
+        </button>
     )
 }

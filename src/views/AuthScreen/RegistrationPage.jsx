@@ -1,4 +1,4 @@
-import { REGISTER_URL } from '../variables'
+import { REGISTER_URL } from '../../variables'
 import AuthLayout from './AuthLayout'
 
 export default function RegistrationPage() {

@@ -1,4 +1,4 @@
-import { LOGIN_URL } from '../variables'
+import { LOGIN_URL } from '../../variables'
 import AuthLayout from './AuthLayout'
 
 export default function LoginPage() {

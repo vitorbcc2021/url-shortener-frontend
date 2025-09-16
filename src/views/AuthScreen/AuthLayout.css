@@ -84,16 +84,22 @@
 }
 
 .auth-footer {
+  display: flex;
   margin-top: 10px;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
 }
 
-.auth-footer {
-  margin-top: 10px;
+.recruiter-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .register-link {
-  position: relative;
   display: block;
+  position: relative;
   padding: 0 20px;
   margin-top: 15px;
 }

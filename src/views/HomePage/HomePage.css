@@ -29,8 +29,10 @@ body {
   padding: 10px;
 }
 
-
 .logout-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 5px 10px;
   color: white;
   cursor: pointer;
@@ -39,6 +41,10 @@ body {
   border-width: 1px;
   border-color: rgb(252, 252, 252);
   box-shadow: 0px 0px 5px black;
+}
+
+.logout-icon {
+  width: 20px;
 }
 
 .logout-btn:hover {

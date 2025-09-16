@@ -2,8 +2,8 @@ import './UrlList.css'
 import EditButton from './EditButton'
 import DeleteButton from './DeleteButton'
 import { useEffect, useState } from 'react'
-import useAuth from '../../../contexts/AuthContext'
-import { apiService } from '../../../services/ApiService'
+import useAuth from '../../../../contexts/AuthContext'
+import { apiService } from '../../../../services/ApiService'
 
 export default function UrlList({ urls, syncUrls, onUrlDeleted, onUrlEdited }) {
     const { isLoggedIn } = useAuth()

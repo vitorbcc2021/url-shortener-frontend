@@ -1,6 +1,6 @@
-import RegistrationPage from './AuthScreen/RegistrationPage'
-import LoginPage from './AuthScreen/LoginPage'
-import HomePage from './HomePage/HomePage'
+import RegistrationPage from './views/AuthScreen/RegistrationPage'
+import LoginPage from './views/AuthScreen/LoginPage'
+import HomePage from './views/HomePage/HomePage'
 import { Routes, Route } from 'react-router-dom'
 import { ProtectedRoute } from './utils/ProtectedRoute'
 

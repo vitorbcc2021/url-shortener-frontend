@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { apiService } from '../../services/ApiService'
+import { apiService } from '../../../services/ApiService'
 
 export default function UrlSubmit({ onUrlCreated }) {
     const [urlForm, setUrlForm] = useState({ originalUrl: '' })
@@ -37,7 +37,9 @@ export default function UrlSubmit({ onUrlCreated }) {
                     value={urlForm['originalUrl'] || ''}
                     placeholder='ex:www.meu-site.com...'
                 />
-                <button className="submit-url-btn" type="submit">submit</button>
+                <button className="submit-url-btn" type="submit">
+                    submit
+                </button>
             </form>
         </div>
     )
